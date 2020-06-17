@@ -23,6 +23,9 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct Home : View {
+    
+    @State var menu = 0
+    
     var body: some View {
         
         ZStack {
@@ -39,7 +42,7 @@ struct Home : View {
                                 .font(.system(size: 30))
                                 .padding(9)
                         }
-                        .background(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                        //.background(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)).opacity(0.1))
                         .cornerRadius(10)
                         
                             Spacer ()
@@ -56,8 +59,51 @@ struct Home : View {
                         .font(.system(size: 22))
                 }
                 
-                Spacer()
-                
+                HStack(spacing: 15) {
+                    
+                    Button(action: {
+                        
+                        
+                    }) {
+                        
+                        Text("Soul Food")
+                            .foregroundColor(self.menu == 0 ? .white : .black)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 20)
+                        
+                    }
+                    .background(self.menu == 0 ? Color.black : Color.white)
+                    .clipShape(Capsule())
+                    
+                    Button(action: {
+                        
+                        
+                    }) {
+                        
+                        Text("Spanish")
+                            .foregroundColor(self.menu == 0 ? .white : .black)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 20)
+                        
+                    }
+                    .background(self.menu == 0 ? Color.black : Color.white)
+                    .clipShape(Capsule())
+                    
+                    Button(action: {
+                        
+                        
+                    }) {
+                        
+                        Text("Italian")
+                            .foregroundColor(self.menu == 0 ? .white : .black)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 20)
+                        
+                    }
+                    .background(self.menu == 0 ? Color.black : Color.white)
+                    .clipShape(Capsule())
+                    
+                }
             }
             .padding(.vertical)
         }
