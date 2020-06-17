@@ -62,7 +62,7 @@ struct Home : View {
                 HStack(spacing: 15) {
                     
                     Button(action: {
-                        
+                        self.menu = 0
                         
                     }) {
                         
@@ -76,34 +76,38 @@ struct Home : View {
                     .clipShape(Capsule())
                     
                     Button(action: {
-                        
+                        self.menu = 1
                         
                     }) {
                         
                         Text("Spanish")
-                            .foregroundColor(self.menu == 0 ? .white : .black)
+                            .foregroundColor(self.menu == 1 ? .white : .black)
                             .padding(.vertical, 10)
                             .padding(.horizontal, 20)
                         
                     }
-                    .background(self.menu == 0 ? Color.black : Color.white)
+                    .background(self.menu == 1 ? Color.black : Color.white)
                     .clipShape(Capsule())
                     
                     Button(action: {
-                        
+                        self.menu = 2
                         
                     }) {
                         
                         Text("Italian")
-                            .foregroundColor(self.menu == 0 ? .white : .black)
+                            .foregroundColor(self.menu == 2 ? .white : .black)
                             .padding(.vertical, 10)
                             .padding(.horizontal, 20)
                         
                     }
-                    .background(self.menu == 0 ? Color.black : Color.white)
+                    .background(self.menu == 2 ? Color.black : Color.white)
                     .clipShape(Capsule())
                     
                 }
+                .padding(.top, 25)
+                
+                Spacer()
+                
             }
             .padding(.vertical)
         }
