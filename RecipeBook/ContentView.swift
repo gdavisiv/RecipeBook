@@ -106,7 +106,11 @@ struct Home : View {
                 }
                 .padding(.top, 30)
                 
-                Spacer()
+                GeometryReader {g in
+                    
+                    List()
+                    
+                }
                 
             }
             .padding(.vertical)
@@ -118,9 +122,7 @@ struct List : View {
     var body: some View {
         HStack(spacing: 0) {
             ForEach(data) { i in
-                GeometryReader{g in
-                    Card(width: g.frame(in: .global).width, data: i)
-                }
+                Card(width: UIScreen.main.bounds.width, data: i)
             }
         }
     }
@@ -133,48 +135,57 @@ struct Card : View {
     
     var body: some View {
         VStack {
-            Text(self.data.name)
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.top, 20)
-            
-            Text(self.data.cName)
-                .foregroundColor(Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)))
-                .padding(.vertical)
-            
-            Image(self.data.image)
-                .resizable()
-                .frame(width: self.width - 100, height: 250)
-                .cornerRadius(20)
-            
-            Text(self.data.ingredients)
-                .fontWeight(.light)
-                .font(.caption)
-                .padding(.top, 20)
-            
-            Button(action: {
+            VStack {
+                Text(self.data.name)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.top, 20)
                 
-            }) {
-                Text("Save")
-                    .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 30)
+                Text(self.data.cName)
+                    .foregroundColor(Color(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)))
+                    .padding(.vertical)
+                
+                Spacer(minLength: 0)
+                
+                Image(self.data.image)
+                    .resizable()
+                    .frame(width: self.width - 100, height: 250)
+                    .cornerRadius(20)
+                
+                Text(self.data.ingredients)
+                    .fontWeight(.light)
+                    .font(.caption)
+                    .padding(.top, 20)
+                
+                Button(action: {
+                    
+                }) {
+                    Text("Save")
+                        .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 30)
+                }
+                .background(Color("Color"))
+                .clipShape(Capsule())
+                .padding(.top, 20)
+                
+                Spacer(minLength: 0)
             }
-            .background(Color("Color"))
-            .clipShape(Capsule())
-            .padding(.top, 20)
+            .padding(.horizontal, 15)
+            .padding(.vertical, 25)
+            .background(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)))
+            .cornerRadius(20)
         }
+        .frame(width: self.width)
     }
 }
 
 struct Type : Identifiable {
-    
     var id : Int
     var name : String
     var cName : String
     var ingredients : String
     var image : String
-    
 }
 
 var data = [
@@ -182,6 +193,6 @@ var data = [
     Type(id: 1, name: "Chickpeas", cName: "Soul Food", ingredients: "Steak, salt, pepper, etc", image: "Chickpeas"),
     Type(id: 2, name: "Rice", cName: "Soul Food", ingredients: "Steak, salt, pepper, etc", image: "Rice"),
     Type(id: 3, name: "Salmon", cName: "Soul Food", ingredients: "Salmon, salt, pepper, etc", image: "Salmon"),
-    Type(id: 3, name: "Vegetable Dish", cName: "Spanish", ingredients: "Carrots, Tomatoes, Brussel Sprouts, etc", image: "Veggies"),
-    Type(id: 3, name: "Brownies", cName: "Soul Food", ingredients: "Carrots, Tomatoes, Brussel Sprouts, etc", image: "Brownies"),
-    Type(id: 3, name: "Grilled Dish", cName: "Italian", ingredients: "Carrots, Tomatoes, Brussel Sprouts, etc", image: "Grilled")]
+    Type(id: 4, name: "Vegetable Dish", cName: "Spanish", ingredients: "Carrots, Tomatoes, Brussel Sprouts, etc", image: "Veggies"),
+    Type(id: 5, name: "Brownies", cName: "Soul Food", ingredients: "Carrots, Tomatoes, Brussel Sprouts, etc", image: "Brownies"),
+    Type(id: 6, name: "Grilled Dish", cName: "Italian", ingredients: "Carrots, Tomatoes, Brussel Sprouts, etc", image: "Grilled")]
