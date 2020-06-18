@@ -156,7 +156,13 @@ struct Card : View {
                 
             }) {
                 Text("Save")
+                    .foregroundColor(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 30)
             }
+            .background(Color("Color"))
+            .clipShape(Capsule())
+            .padding(.top, 20)
         }
     }
 }
@@ -173,7 +179,9 @@ struct Type : Identifiable {
 
 var data = [
     Type(id: 0, name: "Quinoa", cName: "Soul Food", ingredients: "Quinoa, White Rice, salt, pepper, etc", image: "Quinoa"),
-    Type(id: 1, name: "Steak", cName: "Soul Food", ingredients: "Steak, salt, pepper, etc", image: "Quinoa"),
-    
-
-]
+    Type(id: 1, name: "Chickpeas", cName: "Soul Food", ingredients: "Steak, salt, pepper, etc", image: "Chickpeas"),
+    Type(id: 2, name: "Rice", cName: "Soul Food", ingredients: "Steak, salt, pepper, etc", image: "Rice"),
+    Type(id: 3, name: "Salmon", cName: "Soul Food", ingredients: "Salmon, salt, pepper, etc", image: "Salmon"),
+    Type(id: 3, name: "Vegetable Dish", cName: "Spanish", ingredients: "Carrots, Tomatoes, Brussel Sprouts, etc", image: "Veggies"),
+    Type(id: 3, name: "Brownies", cName: "Soul Food", ingredients: "Carrots, Tomatoes, Brussel Sprouts, etc", image: "Brownies"),
+    Type(id: 3, name: "Grilled Dish", cName: "Italian", ingredients: "Carrots, Tomatoes, Brussel Sprouts, etc", image: "Grilled")]
