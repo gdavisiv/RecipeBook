@@ -173,7 +173,7 @@ struct Card : View {
             }
             .padding(.horizontal, 15)
             .padding(.vertical, 25)
-            .background(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)))
+            .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
             .cornerRadius(20)
         }
         .frame(width: self.width)
