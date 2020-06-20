@@ -183,7 +183,17 @@ struct Card : View {
 
 struct Carousel : UIViewRepresentable {
     
+    var width : CGFloat
+    var height : CGFloat
+    @Binding var page : CGFloat
+
+    
     func makeUIView(context: Context) -> UIScrollView {
+        
+        let total =
+        let view = UIScrollView()
+        view.isPagingEnabled = true
+        view.contentSize = CGsize(width: self.width, height: self.height)
         
     }
     
