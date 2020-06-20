@@ -175,9 +175,22 @@ struct Card : View {
             .padding(.vertical, 25)
             .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
             .cornerRadius(20)
+            .padding(.top, 25)
         }
         .frame(width: self.width)
     }
+}
+
+struct Carousel : UIViewRepresentable {
+    
+    func makeUIView(context: Context) -> UIScrollView {
+        
+    }
+    
+    func updateUIView(_ uiView: UIScrollView, context: Context) {
+        
+    }
+    
 }
 
 struct Type : Identifiable {
