@@ -25,6 +25,7 @@ struct ContentView_Previews: PreviewProvider {
 struct Home : View {
     
     @State var menu = 0
+    @State var page = 0
     
     var body: some View {
         
@@ -108,7 +109,8 @@ struct Home : View {
                 
                 GeometryReader {g in
                     
-                    List()
+                    //List()
+                    Carousel(width: UIScreen.main.bounds.width, height: g.frame(in: .global).height, page: self.$page)
                     
                 }
                 
@@ -195,6 +197,18 @@ struct Carousel : UIViewRepresentable {
         view.isPagingEnabled = true
         //Use 1.0 for disabiling Vertical Scrolling
         view.contentSize = CGSize(width: total , height: 1.0)
+        view.bounces = true
+        view.showsVerticalScrollIndicator = false
+        view.showsHorizontalScrollIndicator = false
+        
+        let view1 = UIHostingController(rootView: List())
+        view1.view.frame = CGRect(x: 0, y: 0, width: total, height: self.height)
+        
+        view1.view.backgroundColor = .clear
+        
+        view.addSubview(view1.view)
+        
+        return view
         
     }
     
