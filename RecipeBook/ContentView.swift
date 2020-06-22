@@ -185,15 +185,16 @@ struct Carousel : UIViewRepresentable {
     
     var width : CGFloat
     var height : CGFloat
-    @Binding var page : CGFloat
+    @Binding var page : Int
 
     
     func makeUIView(context: Context) -> UIScrollView {
         
-        let total =
+        let total = width * CGFloat(data.count)
         let view = UIScrollView()
         view.isPagingEnabled = true
-        view.contentSize = CGsize(width: self.width, height: self.height)
+        //Use 1.0 for disabiling Vertical Scrolling
+        view.contentSize = CGSize(width: total , height: 1.0)
         
     }
     
