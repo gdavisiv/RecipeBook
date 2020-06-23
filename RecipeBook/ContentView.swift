@@ -216,6 +216,15 @@ struct Carousel : UIViewRepresentable {
         
     }
     
+    class Coordinator : NSObject, UIScrollViewDelegate {
+        
+        var parenth : Carousel
+        init(parent1: Carousel) {
+            
+            parent = parent1
+        }
+    }
+    
 }
 
 struct Type : Identifiable {
