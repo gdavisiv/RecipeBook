@@ -184,6 +184,10 @@ struct Card : View {
 }
 
 struct Carousel : UIViewRepresentable {
+    func makeCoordinator() -> Coordinator {
+        return Carousel.Coordinator(parent1: self)
+    }
+    
     
     var width : CGFloat
     var height : CGFloat
@@ -218,10 +222,16 @@ struct Carousel : UIViewRepresentable {
     
     class Coordinator : NSObject, UIScrollViewDelegate {
         
-        var parenth : Carousel
+        var parent : Carousel
         init(parent1: Carousel) {
             
             parent = parent1
+        }
+        //Use this function for getting the current page
+        func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+            let page = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
+            
+            print(page)
         }
     }
     
