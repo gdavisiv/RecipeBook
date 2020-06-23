@@ -204,6 +204,7 @@ struct Carousel : UIViewRepresentable {
         view.bounces = true
         view.showsVerticalScrollIndicator = false
         view.showsHorizontalScrollIndicator = false
+        view.delegate = context.coordinator
         
         let view1 = UIHostingController(rootView: List())
         view1.view.frame = CGRect(x: 0, y: 0, width: total, height: self.height)
