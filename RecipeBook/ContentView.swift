@@ -121,10 +121,13 @@ struct Home : View {
 }
 
 struct List : View {
+    
+    @Binding var page : Int
+    
     var body: some View {
         HStack(spacing: 0) {
             ForEach(data) { i in
-                Card(width: UIScreen.main.bounds.width, data: i)
+                Card(page: self.$page, width: UIScreen.main.bounds.width, data: i)
             }
         }
     }
@@ -179,9 +182,11 @@ struct Card : View {
             .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
             .cornerRadius(20)
             .padding(.top, 25)
-            .padding(.top, self.page == data.id ? 25 : 0)
+            .padding(.vertical, self.page == data.id ? 0 : 25)
+            .padding(.horizontal, self.page == data.id ? 0 : 25)
         }
         .frame(width: self.width)
+        .animation(.default)
     }
 }
 
@@ -208,7 +213,7 @@ struct Carousel : UIViewRepresentable {
         view.showsHorizontalScrollIndicator = false
         view.delegate = context.coordinator
         
-        let view1 = UIHostingController(rootView: List())
+        let view1 = UIHostingController(rootView: List(page: self.$page))
         view1.view.frame = CGRect(x: 0, y: 0, width: total, height: self.height)
         
         view1.view.backgroundColor = .clear
@@ -241,6 +246,16 @@ struct Carousel : UIViewRepresentable {
     }
     
 }
+
+struct PageControl : UIViewRepresentable {
+    
+    func makeUIView(context: Context) -> some UIView {
+        <#code#>
+    }
+    
+    
+}
+
 
 struct Type : Identifiable {
     var id : Int
