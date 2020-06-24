@@ -132,6 +132,7 @@ struct List : View {
 
 struct Card : View {
     
+    @Binding var page : Int
     var width : CGFloat
     var data : Type
     
@@ -151,7 +152,7 @@ struct Card : View {
                 
                 Image(self.data.image)
                     .resizable()
-                    .frame(width: self.width - 100, height: 250)
+                    .frame(width: self.width - (self.page == self.data.id ? 100 : 100), height: (self.page == self.data.id ? 250 : 200))
                     .cornerRadius(20)
                 
                 Text(self.data.ingredients)
@@ -178,6 +179,7 @@ struct Card : View {
             .background(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
             .cornerRadius(20)
             .padding(.top, 25)
+            .padding(.top, self.page == data.id ? 25 : 0)
         }
         .frame(width: self.width)
     }
@@ -232,7 +234,9 @@ struct Carousel : UIViewRepresentable {
         func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
             let page = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
             
-            print(page)
+            //print(page)
+            //Loot at Debug and it will show the slide number
+            self.parent.page = page
         }
     }
     
