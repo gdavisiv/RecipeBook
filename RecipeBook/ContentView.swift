@@ -114,6 +114,9 @@ struct Home : View {
                     
                 }
                 
+                PageControl(page : self.$page)
+                    .padding(.top, 20)
+                
             }
             .padding(.vertical)
         }
@@ -249,11 +252,22 @@ struct Carousel : UIViewRepresentable {
 
 struct PageControl : UIViewRepresentable {
     
-    func makeUIView(context: Context) -> some UIView {
-        <#code#>
+    @Binding var page : Int
+    
+    func makeUIView(context: Context) -> UIPageControl {
+        let view = UIPageControl()
+        view.currentPageIndicatorTintColor = .black
+        view.pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
+        view.numberOfPages = data.count
+        return view
     }
     
-    
+    func updateUIView(_ uiView: UIPageControl, context: Context) {
+        //Code to update indicator whenever the page changes
+        DispatchQueue.main.async {
+            uiView.currentPage = self.page
+        }
+    }
 }
 
 
